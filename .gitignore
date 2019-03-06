@@ -4,5 +4,5 @@ virtual/
 
 .env
 
-.start.sh
+start.sh
 
