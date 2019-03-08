@@ -1,0 +1,26 @@
+$font: 'Open Sans', sans-serif;
+
+@mixin fonts($color,$size,$weight: 500px,$family: $font) {
+   font-family: $family;
+   font-size: $size;
+   font-weight: $weight;
+   color: $color;
+}
+
+$colors: (
+   primary: #000,
+   buttons: #405DE6,
+   likes: #F56040
+);
+
+@function clr($value) {
+   @return map-get($colors, $value);
+}
+
+body {
+   margin: 0;
+   padding: 0;
+}
+
+
+

@@ -7,8 +7,8 @@ class Profile(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE)
    name = models.CharField(max_length=50)
    email = models.EmailField(max_length=254)
-   avatar = models.ImageField(upload_to='avatar/', height_field=None, width_field=None, max_length=None)
-   bio = models.TextField(max_length=140)
+   avatar = models.ImageField(upload_to='avatar/', height_field=200, width_field=200, default='default.jpg')
+   bio = models.TextField(max_length=140, null=True)
 
    def __str__(self):
       return self.name
@@ -19,14 +19,16 @@ class Image(models.Model):
    caption = models.TextField(max_length=280)
    img_name = models.CharField(max_length=50)
    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
-
+   time_posted = models.DateField(auto_now=True)
+   
    def __str__(self):
       return self.caption
 
 class Comments(models.Model):
    
    comment = models.TextField(max_length=140)
-   user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+   comment_author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+   
 
    def __str__(self):
       return self.comment
