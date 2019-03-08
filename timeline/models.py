@@ -19,4 +19,8 @@ class Image(models.Model):
    img_name = models.CharField(max_length=50)
    likes = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
+class Comments(models.Model):
+   
+   comment = models.TextField(max_length=140)
 
+   
