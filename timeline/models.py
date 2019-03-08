@@ -12,3 +12,11 @@ class Profile(models.Model):
    def __str__(self):
       return self.name
    
+class Image(models.Model):
+
+   img = models.ImageField(upload_to='', height_field=None, width_field=None, max_length=None)
+   caption = models.TextField(max_length=280)
+   img_name = models.CharField(max_length=50)
+   likes = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
