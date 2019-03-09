@@ -1,0 +1,18 @@
+{% extends "timeline/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+   <div class="form-container">
+
+      <form action="" method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="btn">Sign Up</button>
+      </form>
+      
+      
+   </div>   
+  
+{% endblock content %}
+

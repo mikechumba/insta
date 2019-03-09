@@ -6,7 +6,6 @@ class Profile(models.Model):
 
    user = models.OneToOneField(User, on_delete=models.CASCADE)
    name = models.CharField(max_length=50)
-   email = models.EmailField(max_length=254)
    avatar = models.ImageField(upload_to='avatar/', height_field=200, width_field=200, default='default.jpg')
    bio = models.TextField(max_length=140, null=True)
 

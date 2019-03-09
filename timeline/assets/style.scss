@@ -1,0 +1,101 @@
+$font: 'Open Sans', sans-serif;
+
+@mixin fonts($color,$size,$weight: 500px,$family: $font) {
+   font-family: $family;
+   font-size: $size;
+   font-weight: $weight;
+   color: $color;
+}
+
+$colors: (
+   primary: #000,
+   buttons: #405DE6,
+   likes: #F56040
+);
+
+@function clr($value) {
+   @return map-get($colors, $value);
+}
+
+body {
+   margin: 0;
+   padding: 0;
+}
+
+nav {
+   display: flex;
+   height: 100%;
+   box-sizing: border-box;
+   overflow: hidden;
+   margin: 0 auto;
+   align-self: center;
+   vertical-align: middle;
+}
+
+.nav-bg {
+   height: 10vh;
+   margin: 0;
+   padding: 0;
+   border-bottom: 1px solid rgba(#333,0.2);
+}
+
+.logo {
+   display: flex;
+   height: 30px;
+   align-self: center;
+   .logo-icon {
+      width: 25px;
+      overflow: hidden;
+      margin-right: 10px;
+      img {
+         vertical-align: middle;
+         width: 100%;
+         &::after {
+            content: '';
+            display: block;
+            height: 40px;
+            // width: 1px;
+            float: right;
+            border: 1px solid rgba(#333,0.7);
+            margin: 0 3px;
+         }
+      }
+      
+   }
+
+   .glyph {
+      img {
+         vertical-align: middle;
+         height: 100%;
+      }
+   }
+}
+
+.search {
+   align-self: center;
+   
+   input {
+      padding: 6px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(#333,0.5);
+   
+      &::placeholder {
+         text-align: center;
+         font-family: FontAwesome, 'Open Sans', sans-serif;
+      }
+   }
+
+}
+
+.page {
+   width: 100%;
+   height: 100vh;
+   background-color: rgba(#333,0.03);
+}
+
+.helptext {
+   display: none;
+}
+
+.form
+
