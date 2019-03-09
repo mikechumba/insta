@@ -34,3 +34,7 @@ def register(request):
    }
 
    return render(request, 'timeline/register.html', context)
+
+def profile(request):
+
+   return render(request, 'timeline/profile.html')
