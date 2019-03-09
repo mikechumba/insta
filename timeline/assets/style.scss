@@ -9,8 +9,9 @@ $font: 'Open Sans', sans-serif;
 
 $colors: (
    primary: #000,
-   buttons: #405DE6,
-   likes: #F56040
+   buttons: #3897F0,
+   likes: #F56040,
+   bg: #FAFAFA
 );
 
 @function clr($value) {
@@ -90,12 +91,91 @@ nav {
 .page {
    width: 100%;
    height: 100vh;
-   background-color: rgba(#333,0.03);
+   margin: 0;
+   padding: 0;
+   position: fixed;
+   z-index: -4;
+   background-color: clr(bg);
 }
 
 .helptext {
    display: none;
 }
 
-.form
+.form-container {
+   width: 25%;
+   margin: 5% auto 1% auto;
+   border: 1px solid rgba(#333,0.2);
+   background: #fff;
+   // border-radius: 5px;
+
+   form {
+      width: 70%;
+      margin: 10px auto;
+      padding: 0;
+   }
+
+   .legend {
+      width: 92%;
+      margin: 0 auto;
+      text-align: center;
+      .form-glyph {
+         margin: 3% 0;
+         height: 40px;
+         overflow: hidden;
+         img {
+            height: 100%;
+         }
+      }
+
+      h5 {
+         margin: 0;
+         @include fonts(rgba(#333,0.5),18px,700);
+      }
+   }
+
+   input {
+      width: 100%;
+      margin: 0;
+      padding: 10px 8px;
+      background-color: clr(bg);
+      border: 1px solid rgba(#333,0.2);
+      border-radius: 4px;
+      &::focus {
+         border: 1px solid rgba(#333,0.7);
+      }
+   }
+   
+   label {
+      display: none;
+   }
+
+   button {
+      background-color: clr(buttons);
+      border: none;
+      width: 100%;
+      @include fonts(#fff,13px,500);
+      padding: 7px 0;
+      border-radius: 4px;
+      margin: 0;
+   }
+
+   
+}
+
+.acc-status-check {
+   width: 25%;
+   margin: 1% auto;
+   border: 1px solid rgba(#333,0.2);
+
+   p {
+      margin: 5% 0;
+      text-align: center;
+      @include fonts(#333,13px,400);
+      a {
+         text-decoration: none;
+         @include fonts(clr(buttons),13px,400);
+      }
+   }
+}
 
