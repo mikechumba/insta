@@ -21,6 +21,7 @@ $colors: (
 body {
    margin: 0;
    padding: 0;
+   font-family: $font;
 }
 
 nav {
@@ -175,6 +176,69 @@ nav {
       a {
          text-decoration: none;
          @include fonts(clr(buttons),13px,400);
+      }
+   }
+}
+
+.container {
+   width: 60%;
+   margin: 0 auto;
+}
+
+// Profile styling
+
+.profile-content {
+   margin-top: 4%;
+   display: flex;
+
+   .main-avatar {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 3%;
+      img {
+         height: 100%;
+      }
+   }
+
+   .profile-top {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+
+      .profile-user {
+         // margin-right: 4%;
+         h1 {
+            @include fonts(rgba(#333,0.9),30px,300);
+         }
+         
+      }
+      .edit-btn {
+         align-self: center;
+         a {
+            text-decoration: none;
+            padding: 6px 8px;
+            background-color: transparent;
+            border: 1px solid rgba(#333,0.5);
+            @include fonts(#333,14px,600);
+            border-radius: 4px;
+         }
+         
+      }
+   }
+
+   .profile-details {
+
+      .activity-count {
+         display: flex;
+         p {
+            margin-right: 5%;
+            @include fonts(rgba(#333,0.9),17px,400);
+            span {
+               @include fonts(#000,17px,600);
+            }
+         }
       }
    }
 }
