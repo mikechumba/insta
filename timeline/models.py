@@ -18,6 +18,7 @@ class Image(models.Model):
    img_name = models.CharField(max_length=50)
    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
    time_posted = models.DateField(auto_now=True)
+   likes = models.ForeignKey(Profile,on_delete=models.CASCADE, related_name='liked_by', null=True)
    
    def __str__(self):
       return self.caption
