@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required
 def index(request):
 
    profiles = User.objects.all()
@@ -36,6 +39,8 @@ def register(request):
 
    return render(request, 'timeline/register.html', context)
 
+
+@login_required
 def profile(request):
 
    user = User.objects.filter(username = 'mikechumba').first()
