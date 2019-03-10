@@ -27,7 +27,7 @@ class Comments(models.Model):
    
    comment = models.CharField(max_length=140)
    comment_author = models.ForeignKey(Profile, on_delete=models.CASCADE)
-   
+   commented_on = models.ForeignKey(Image, on_delete=models.CASCADE)
 
    def __str__(self):
       return self.comment

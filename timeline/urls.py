@@ -4,12 +4,13 @@ from django.urls import path,include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from . import views
+from .forms import LoginForm
 
 urlpatterns = [
    path('', views.index, name="home"),
    path('register', views.register, name='register'),
    path('profile', views.profile, name='profile'),
    path('profile/edit', views.edit_profile, name='edit_profile'),
-   path('login/', views.login_view, name='login'),
+   path('login/', auth_views.LoginView.as_view(authentication_form=LoginForm), name='login'),
    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
