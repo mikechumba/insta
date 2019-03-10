@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Profile
 from django.contrib.auth.models import User
-from .forms import Registration
+from .forms import Registration,ProfileUpdateForm
 from django.contrib.auth import login,authenticate
 
 # Create your views here.
@@ -45,3 +45,17 @@ def profile(request):
    }
 
    return render(request, 'timeline/profile.html', context)
+
+
+def edit_profile(request):
+
+   user = User.objects.filter(username = 'mikechumba').first()
+
+   form = ProfileUpdateForm()
+
+   context = {
+      'user': user,
+      'form': form
+   }
+
+   return render(request, 'timeline/edit-profile.html', context)

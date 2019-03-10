@@ -20,3 +20,8 @@ class Registration(UserCreationForm):
       fields = UserCreationForm.Meta.fields + ("email","username","password1")
    
 
+class ProfileUpdateForm(forms.ModelForm):
+
+   class Meta:
+      model = Profile
+      fields = ['avatar','bio']
