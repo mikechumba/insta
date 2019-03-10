@@ -9,7 +9,10 @@
 
       <div class="profile-content">
          <div class="main-avatar">
-            <img src="{{ user.profile_set.avatar.url }}" alt="">
+            <img src="{{ user.profile.avatar.url }}" alt="">
+         </div>
+         <div class="profile-details">
+            <h1>{{ user.username }}</h1>
          </div>
       </div>
 

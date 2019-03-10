@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
 
    user = models.OneToOneField(User, on_delete=models.CASCADE)
-   avatar = models.ImageField(upload_to='avatar/', height_field=200, width_field=200, default='default.jpg')
+   avatar = models.ImageField(upload_to='avatar/', default='default.jpg')
    bio = models.TextField(max_length=140, null=True)
 
    def __str__(self):
-      return self.name
+      return f'{self.user.username}'
    
 class Image(models.Model):
 

@@ -25,6 +25,7 @@ def register(request):
          raw_password = form.cleaned_data.get('password1')
          user = authenticate(username=username, password=raw_password)
          login(request, user)
+         user = User.objects.filter
          return redirect('photo_home')
    else:
       form = Registration()
@@ -37,4 +38,10 @@ def register(request):
 
 def profile(request):
 
-   return render(request, 'timeline/profile.html')
+   user = User.objects.filter(username = 'mikechumba').first()
+
+   context = {
+      'user': user
+   }
+
+   return render(request, 'timeline/profile.html', context)
