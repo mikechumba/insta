@@ -28,6 +28,11 @@
                <div class="post-caption">
                   <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>
                </div>
+               <div class="post-comments">
+                  {% for comment in post.comments_set  %}
+                    <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
+                  {% endfor %}
+               </div>
                <div class="post-comment-field">
                   <form action="" method="POST">
                      {% csrf_token %}

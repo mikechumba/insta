@@ -469,7 +469,56 @@ nav {
   color: #000;
 }
 
+.post-card .post-comment-field {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.post-card .post-comment-field form {
+  margin: 0;
+  padding: 0;
+}
+
 .post-card .post-comment-field label {
   display: none;
+}
+
+.post-card .post-comment-field input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 12px 0;
+  background-color: none;
+  border: none;
+  border-top: 1px solid rgba(51, 51, 51, 0.2);
+}
+
+.post-card .post-comment-field input::-webkit-input-placeholder {
+  padding: 0 10px;
+}
+
+.post-card .post-comment-field input:-ms-input-placeholder {
+  padding: 0 10px;
+}
+
+.post-card .post-comment-field input::-ms-input-placeholder {
+  padding: 0 10px;
+}
+
+.post-card .post-comment-field input::placeholder {
+  padding: 0 10px;
+}
+
+.post-card .post-comment-field input::focus {
+  outline: none;
+}
+
+.post-card .post-comment-field::before {
+  content: '';
+  display: block;
+  width: 100%;
+  border: 1px solid #FAFAFA;
 }
 /*# sourceMappingURL=style.css.map */

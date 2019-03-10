@@ -393,9 +393,38 @@ nav {
          }
       }
    }
+   
    .post-comment-field {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      form {
+         margin: 0;
+         padding: 0;
+      }
       label {
          display: none;
+      }
+      input {
+         box-sizing: border-box;
+         width: 100%;
+         margin: 0;
+         padding: 12px 0;
+         background-color: none;
+         border: none;
+         border-top: 1px solid rgba(#333,0.2);
+         &::placeholder {
+            padding: 0 10px;
+         }
+         &::focus {
+            outline: none;
+         }
+      }
+      &::before {
+         content: '';
+         display: block;
+         width: 100%;
+         border: 1px solid clr(bg);
       }
    }
 }
