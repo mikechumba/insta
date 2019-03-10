@@ -9,6 +9,7 @@ nav {
   display: -ms-flexbox;
   display: flex;
   height: 100%;
+  width: 60%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   overflow: hidden;
@@ -16,6 +17,9 @@ nav {
   -ms-flex-item-align: center;
       align-self: center;
   vertical-align: middle;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .nav-bg {
@@ -37,7 +41,7 @@ nav {
 .logo .logo-icon {
   width: 25px;
   overflow: hidden;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .logo .logo-icon img {
@@ -57,6 +61,19 @@ nav {
 .logo .glyph img {
   vertical-align: middle;
   height: 100%;
+  fill: #000;
+}
+
+.logo .glyph::before {
+  content: '';
+  display: block;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  float: left;
+  height: 100%;
+  border: 0.6px solid #000;
+  margin-right: 15px;
 }
 
 .search {
@@ -89,6 +106,22 @@ nav {
 .search input::placeholder {
   text-align: center;
   font-family: FontAwesome, 'Open Sans', sans-serif;
+}
+
+.user-menu {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.user-menu .profile-icon {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.user-menu .profile-icon img {
+  width: 100%;
 }
 
 .page {
@@ -272,5 +305,72 @@ nav {
   font-size: 17px;
   font-weight: 600;
   color: #000;
+}
+
+.update-form {
+  width: 40%;
+  margin: 2% auto 1% auto;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  background: #fff;
+}
+
+.update-form form {
+  width: 70%;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.update-form .legend {
+  width: 92%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.update-form .legend .form-glyph {
+  margin: 3% 0;
+  height: 40px;
+  overflow: hidden;
+}
+
+.update-form .legend .form-glyph img {
+  height: 100%;
+}
+
+.update-form .legend h5 {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.update-form input, .update-form textarea {
+  width: 100%;
+  margin: 0;
+  padding: 10px 8px;
+  background-color: #FAFAFA;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  border-radius: 4px;
+}
+
+.update-form input::focus, .update-form textarea::focus {
+  border: 1px solid rgba(51, 51, 51, 0.7);
+}
+
+.update-form label {
+  display: none;
+}
+
+.update-form button {
+  background-color: #3897F0;
+  border: none;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  padding: 7px 0;
+  border-radius: 4px;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

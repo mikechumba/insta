@@ -27,11 +27,13 @@ body {
 nav {
    display: flex;
    height: 100%;
+   width: 60%;
    box-sizing: border-box;
    overflow: hidden;
    margin: 0 auto;
    align-self: center;
    vertical-align: middle;
+   justify-content: space-between;
 }
 
 .nav-bg {
@@ -48,7 +50,7 @@ nav {
    .logo-icon {
       width: 25px;
       overflow: hidden;
-      margin-right: 10px;
+      margin-right: 15px;
       img {
          vertical-align: middle;
          width: 100%;
@@ -69,13 +71,22 @@ nav {
       img {
          vertical-align: middle;
          height: 100%;
+         fill: #000;
+      }
+      &::before {
+         content: '';
+         display: block;
+         align-self: center;
+         float: left;
+         height: 100%;
+         border: 0.6px solid #000;
+         margin-right: 15px;
       }
    }
 }
 
 .search {
    align-self: center;
-   
    input {
       padding: 6px 8px;
       border-radius: 3px;
@@ -87,6 +98,19 @@ nav {
       }
    }
 
+}
+
+
+.user-menu {
+   align-self: center;
+   .profile-icon {
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      img {
+         width: 100%;
+      }
+   }
 }
 
 .page {
@@ -243,3 +267,61 @@ nav {
    }
 }
 
+.update-form {
+   width: 40%;
+   margin: 2% auto 1% auto;
+   border: 1px solid rgba(#333,0.2);
+   background: #fff;
+   // border-radius: 5px;
+
+   form {
+      width: 70%;
+      margin: 20px auto;
+      padding: 0;
+   }
+
+   .legend {
+      width: 92%;
+      margin: 0 auto;
+      text-align: center;
+      .form-glyph {
+         margin: 3% 0;
+         height: 40px;
+         overflow: hidden;
+         img {
+            height: 100%;
+         }
+      }
+
+      h5 {
+         margin: 0;
+         @include fonts(rgba(#333,0.5),18px,700);
+      }
+   }
+
+   input,textarea {
+      width: 100%;
+      margin: 0;
+      padding: 10px 8px;
+      background-color: clr(bg);
+      border: 1px solid rgba(#333,0.2);
+      border-radius: 4px;
+      &::focus {
+         border: 1px solid rgba(#333,0.7);
+      }
+   }
+   
+   label {
+      display: none;
+   }
+
+   button {
+      background-color: clr(buttons);
+      border: none;
+      width: 100%;
+      @include fonts(#fff,13px,500);
+      padding: 7px 0;
+      border-radius: 4px;
+      margin: 0 auto;
+   }
+}

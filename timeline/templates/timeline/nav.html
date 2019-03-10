@@ -5,7 +5,6 @@
          <div class="logo-icon">
             <img src="{% static 'images/insta_icon.svg' %}" alt="">
          </div>
-
          <div class="glyph">
             <img src="{% static 'images/insta_text.svg' %}" alt="">
          </div>
@@ -19,7 +18,9 @@
       </div>
       <div class="user-menu">
          <div class="profile-icon">
-            <img src="{% static 'images/account.svg' %}" alt="">
+            <a href="{% url 'profile' %}">
+               <img src="{% static 'images/account.svg' %}" alt="">
+            </a>
          </div>
       </div>
    </nav>

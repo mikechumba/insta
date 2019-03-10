@@ -45,3 +45,15 @@ class UserUpdateForm(forms.ModelForm):
    class Meta:
       model = User
       fields = ['first_name','last_name']
+
+class LoginForm(forms.ModelForm):
+   '''
+   Login form.
+
+   Takes a username and password
+   '''
+   username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+   password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+   class Meta:
+      model = User
+      fields = ['username', 'password']

@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import Profile
 from django.contrib.auth.models import User
-from .forms import Registration,ProfileUpdateForm,UserUpdateForm
+from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm
 from django.contrib.auth import login,authenticate
-
+from django.contrib import messages
 # Create your views here.
 def index(request):
 
@@ -26,7 +26,7 @@ def register(request):
          user = authenticate(username=username, password=raw_password)
          login(request, user)
          user = User.objects.filter
-         return redirect('photo_home')
+         return redirect('edit_profile')
    else:
       form = Registration()
 
@@ -51,8 +51,17 @@ def edit_profile(request):
 
    user = User.objects.filter(username = 'mikechumba').first()
 
-   form = ProfileUpdateForm()
-   user_form = UserUpdateForm()
+   if request.method == 'POST':
+      form = ProfileUpdateForm(request.POST, instance=request.user)
+      user_form = UserUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+      if user_form.is_valid() and form.is_valid():
+         user_form.save()
+         form.save()
+         messages.info(request, 'You\'ve successfully updated your account!')
+         return redirect('profile')
+   else:
+      form = ProfileUpdateForm(instance=request.user)
+      user_form = UserUpdateForm(instance=request.user.profile)
 
    context = {
       'user': user,
@@ -61,3 +70,22 @@ def edit_profile(request):
    }
 
    return render(request, 'timeline/edit-profile.html', context)
+
+
+def login_view(request):
+   if request.method == 'POST':
+      form = LoginForm()
+      if form.is_valid():
+         username = form.cleaned_data.get('username')
+         raw_password = form.cleaned_data.get('password1')
+         user = authenticate(username=username, password=raw_password)
+         login(request, user)
+         redirect('home')
+   else:
+      form = LoginForm()
+
+   context = {
+      'form': form
+   }
+
+   return render(request, 'timeline/login.html', context)
