@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Profile,Image
 from django.contrib.auth.models import User
-from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm
+from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -9,11 +9,20 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def index(request):
+   if request.method == 'POST':
+      form = CommentForm()
+      if form.is_valid():
+         form.save()
+         messages.success('Comment added successfully!')
+         return redirect('home')
+   else:
+      form = CommentForm()
 
    images = Image.objects.all()
 
    context = {
-      'images': images
+      'images': images,
+      'form': form
    }
    return render(request, 'timeline/timeline.html', context)
 

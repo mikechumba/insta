@@ -468,4 +468,8 @@ nav {
   font-weight: 600;
   color: #000;
 }
+
+.post-card .post-comment-field label {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

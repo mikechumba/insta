@@ -25,7 +25,7 @@ class Image(models.Model):
 
 class Comments(models.Model):
    
-   comment = models.TextField(max_length=140)
+   comment = models.CharField(max_length=140)
    comment_author = models.ForeignKey(Profile, on_delete=models.CASCADE)
    
 
