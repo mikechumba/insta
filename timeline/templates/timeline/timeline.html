@@ -5,8 +5,32 @@
 
    {% include "timeline/nav.html" %}
 
-   <div class="page">
+   <div class="page"></div>
+      <div class="posts-container">
 
-   </div>
+         {% for post in images %}
+            <div class="post-card">
+               <div class="post-top">
+                  <div class="avatar-sm">
+                     <img src="{{ post.author.avatar.url }}" alt="">
+                  </div>
+                  <p>{{ post.author.user.username }}</p>
+               </div>
+               <div class="post-image">
+                  <img src="{{ post.img.url }}" alt="">
+               </div>
+               <div class="post-icons">
+                  <img src="{% static 'images/like.svg' %}" alt="">
+               </div>
+               <div class="post-likes">
+                  <p>1 Like</p>
+               </div>
+               <div class="post-caption">
+                  <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>
+               </div>
+            </div>
+         {% endfor %}
+
+      </div>
   
 {% endblock content %}

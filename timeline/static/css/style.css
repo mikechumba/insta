@@ -134,6 +134,14 @@ nav {
   background-color: #FAFAFA;
 }
 
+.post-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: -4;
+  background-color: #FAFAFA;
+}
+
 .helptext {
   display: none;
 }
@@ -372,5 +380,92 @@ nav {
   padding: 7px 0;
   border-radius: 4px;
   margin: 0 auto;
+}
+
+.posts-container {
+  width: 40%;
+  margin: 2% auto;
+}
+
+.post-card {
+  background-color: #fff;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+}
+
+.post-card .post-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.post-card .post-top p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 0.9);
+}
+
+.post-card .avatar-sm {
+  height: 30px;
+  width: 30px;
+  margin: 2%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.post-card .avatar-sm img {
+  height: 100%;
+}
+
+.post-card .post-image {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.post-card .post-image img {
+  width: 100%;
+}
+
+.post-card .post-icons {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 1% 2%;
+}
+
+.post-card .post-icons img {
+  width: 100%;
+}
+
+.post-card .post-likes {
+  margin: 1% 2%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.post-card .post-caption {
+  margin: 1% 2%;
+}
+
+.post-card .post-caption p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.post-card .post-caption p span {
+  margin-right: 4px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
 }
 /*# sourceMappingURL=style.css.map */

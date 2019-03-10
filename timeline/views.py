@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile
+from .models import Profile,Image
 from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm
 from django.contrib.auth import login,authenticate
@@ -10,10 +10,10 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index(request):
 
-   profiles = User.objects.all()
+   images = Image.objects.all()
 
    context = {
-      'profiles': profiles
+      'images': images
    }
    return render(request, 'timeline/timeline.html', context)
 
@@ -68,7 +68,7 @@ def edit_profile(request):
       form = ProfileUpdateForm(instance=request.user)
       user_form = UserUpdateForm(instance=request.user.profile)
 
-   context = {
+   context = { 
       'user': user,
       'user_form': user_form,
       'form': form
@@ -85,7 +85,7 @@ def login_view(request):
          raw_password = form.cleaned_data.get('password1')
          user = authenticate(username=username, password=raw_password)
          login(request, user)
-         redirect('home')
+         return redirect('home')
    else:
       form = LoginForm()
 
@@ -93,4 +93,4 @@ def login_view(request):
       'form': form
    }
 
-   return render(request, 'timeline/login.html', context)
+   return render(request, 'registration/login.html', context)

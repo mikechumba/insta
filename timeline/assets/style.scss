@@ -123,6 +123,14 @@ nav {
    background-color: clr(bg);
 }
 
+.post-page {
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   z-index: -4;
+   background-color: clr(bg);
+}
+
 .helptext {
    display: none;
 }
@@ -323,5 +331,66 @@ nav {
       padding: 7px 0;
       border-radius: 4px;
       margin: 0 auto;
+   }
+}
+
+// Timeline styling
+.posts-container {
+   width: 40%;
+   margin: 2% auto;
+}
+
+.post-card {
+   background-color: #fff;
+   border: 1px solid rgba(#333,0.2);
+
+   .post-top {
+      display: flex;
+      p {
+         align-self: center;
+         @include fonts(rgba(#333,0.9),14px,600);
+      }
+   }
+   .avatar-sm {
+      height: 30px;
+      width: 30px;
+      margin: 2%;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+         height: 100%;
+      }
+   }
+   .post-image {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      img {
+         width: 100%;
+      }
+   }
+   .post-icons {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      margin: 1% 2%;
+      img {
+         width: 100%;
+      }
+   }
+   .post-likes {
+      margin: 1% 2%;
+      @include fonts(#000,14px,600);
+   }
+   .post-caption {
+      margin: 1% 2%;
+      p {
+         @include fonts(#000,14px,400);
+         span {
+            margin-right: 4px;
+            @include fonts(#000,14px,600);
+         }
+      }
    }
 }
