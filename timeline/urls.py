@@ -16,4 +16,8 @@ urlpatterns = [
    path('post/<int:image_id>', views.image_view, name='image_view'),
    path('login/', auth_views.LoginView.as_view(authentication_form=LoginForm), name='login'),
    path('logout/', views.logout_view, name='logout'),
+   path('search/', views.search,name='search'),
+   # method views
+   path('follow/', views.follow, name='follow'),
+   path('like/',views.like,name='like')
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Image,Comments
+from .models import Profile,Image,Comments,Follow
 from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm,ImageForm
 from django.contrib.auth import login,authenticate,logout
@@ -130,6 +130,21 @@ def edit_profile(request):
 
    return render(request, 'timeline/edit-profile.html', context)
 
+@login_required
+def search(request):
+
+   if 'insta_search' in request.GET and request.GET["insta_search"]:
+      searched = request.GET.get("insta_search")
+      if searched:
+         user = User.objects.filter(username=searched).first()
+
+   context = {
+      'searched': searched,
+      'user': user
+   }
+
+   return render(request, 'timeline/search.html', context)
+
 
 def login_view(request):
    if request.method == 'POST':
@@ -181,3 +196,21 @@ def image_view(request,image_id):
    }
 
    return render(request,'timeline/image_view.html',context)
+
+
+def like(request):
+
+   return redirect('home')
+
+def follow(request):
+
+   user = request.user
+   follows = Follow.objects.all()
+
+   if user.profile not in follows:
+      Follow.follow(user.profile)
+      return redirect('profile')
+
+   else:
+      Follow.objects.get(following=user.profile).delete()
+      return redirect('profile')

@@ -301,6 +301,9 @@ nav {
 }
 
 .profile-content .profile-details .activity-count p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-right: 5%;
   font-family: "Open Sans", sans-serif;
   font-size: 17px;
@@ -309,10 +312,22 @@ nav {
 }
 
 .profile-content .profile-details .activity-count p span {
+  margin-right: 5px;
   font-family: "Open Sans", sans-serif;
   font-size: 17px;
   font-weight: 600;
   color: #000;
+}
+
+.profile-content .follow-btn a button {
+  background-color: #3897F0;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 3px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .update-form {

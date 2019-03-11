@@ -37,8 +37,13 @@ class Comments(models.Model):
 
 class Follow(models.Model):
 
-   followers = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='followed_by')
-   following = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='following')
+   followers = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='followed_by',null=True)
+   following = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='following',null=True)
 
    def __str__(self):
       return self.followers
+
+   @classmethod
+   def follow(cls,prfl):
+      follow = cls(followers=None,following=prfl)
+      return follow.save()

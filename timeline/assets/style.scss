@@ -240,7 +240,6 @@ nav {
       width: 100%;
 
       .profile-user {
-         // margin-right: 4%;
          h1 {
             @include fonts(rgba(#333,0.9),30px,300);
          }
@@ -265,13 +264,28 @@ nav {
       .activity-count {
          display: flex;
          p {
+            display: flex;
             margin-right: 5%;
             @include fonts(rgba(#333,0.9),17px,400);
             span {
+               margin-right: 5px;
                @include fonts(#000,17px,600);
             }
          }
       }
+   }
+
+   .follow-btn {
+      a {
+         button {
+            background-color: clr(buttons);
+            padding: 7px 12px;
+            border: none;
+            border-radius: 3px;
+            @include fonts(#fff,12px,500);
+         }
+      }
+
    }
 }
 

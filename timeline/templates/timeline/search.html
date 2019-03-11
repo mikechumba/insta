@@ -1,0 +1,26 @@
+{% extends "timeline/layout.html" %}
+{% load static %}
+
+{% block content %}
+  
+   {% include "timeline/nav.html" %}
+
+   <div class="page"></div>
+   <div class="container">
+      {% if user %}
+        <h5>Your search for <span>{{ searched }} returned:</span></h5>
+        <div class='user-card'>
+           <div class="avatar-md">
+              <img src="{{ user.profile.avatar.url }}" alt="">
+           </div>
+           <div>
+              <p>{{ user.username }}</p>
+           </div>
+        </div>
+      {% else %}
+        <h5>There's no user going by that username</h5>
+      {% endif %}
+      
+   </div>
+
+{% endblock content %}
