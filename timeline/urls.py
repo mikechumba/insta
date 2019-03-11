@@ -12,7 +12,8 @@ urlpatterns = [
    path('profile', views.profile, name='profile'),
    path('timeline/new', views.new_post, name='new_post'),
    path('profile/edit', views.edit_profile, name='edit_profile'),
-   path('<user_name>', views.edit_profile, name='user_profile'),
+   path('<user_name>', views.users, name='user_profile'),
+   path('post/<int:image_id>', views.image_view, name='image_view'),
    path('login/', auth_views.LoginView.as_view(authentication_form=LoginForm), name='login'),
    path('logout/', views.logout_view, name='logout'),
 ]

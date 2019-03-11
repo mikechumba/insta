@@ -1,0 +1,71 @@
+{% extends "timeline/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+   {% include "timeline/nav.html" %}
+
+   <div class="page"></div>
+      <div class="container">
+
+         <div class="profile-content">
+
+            <div class="main-avatar">
+               <img src="{{ user.profile.avatar.url }}" alt="">
+            </div>
+            <div class="profile-details">
+               <div class="profile-top">
+                  <div class="profile-user">
+                     <h1>{{ user.username }}</h1>
+                  </div>
+                  <div class="edit-btn">
+                     <a href="{% url 'edit_profile' %}">Edit Profile</a>
+                     <button id="settings"><i class="fas fa-cog"></i></button> 
+                  </div>
+                  
+               </div>
+
+
+               <div class="activity-count">
+                  <p><span>{{ user.profile.image_set.count }}</span> posts </p>
+                  <p><span>{{ user.profile.followed_by.count }}</span> followers </p>
+                  <p><span>{{ user.profile.following.count }}</span> following </p>
+               </div>
+               {% if user.profile.bio %}
+                  <div class="bio">
+                     <p>{{ user.profile.bio }}</p>
+                  </div>
+               {% endif %}
+            </div>
+            
+         </div>
+
+      </div>
+
+
+      <div class="profile-images">
+         {% for image in images %}
+            <div class="image-card">
+               <img src="{{ image.img.url }}" alt="">
+            </div>
+         {% endfor %}
+      </div>
+
+   
+
+   <div class="modal">
+      <div class="settings-list">
+         <div class="text">
+            <a href="{% url 'edit_profile' %}">
+               <p>Edit Profile</p>
+            </a>
+            <a href="{% url 'logout' %}">
+               <p class="with-border">Log Out</p>
+            </a>
+            <p id="cancel">Cancel</p>
+         </div>
+
+      </div>
+   </div>
+
+{% endblock content %}

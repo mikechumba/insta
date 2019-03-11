@@ -37,8 +37,8 @@ def index(request):
 
 @login_required
 def users(request,user_name):
-   user = Profile.objects.filter(username=user_name).first()
-   images = Image.objects.filter(author=user)
+   user = User.objects.filter(username=user_name).first()
+   images = Image.objects.filter(author=user.profile)
 
    context = {
       'user': user,
@@ -149,6 +149,20 @@ def login_view(request):
 
    return render(request, 'registration/login.html', context)
 
+
+@login_required
 def logout_view(request):
    logout(request)
    return redirect('login')
+
+
+@login_required
+def image_view(request,image_id):
+
+   image = Image.objects.filter(pk=image_id).first()
+
+   context = {
+      'image': image
+   }
+
+   return render(request,'timeline/image_view.html',context)
