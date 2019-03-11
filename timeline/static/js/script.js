@@ -6,3 +6,7 @@ $('#newpost').on('click', () => {
 $('#settings').on('click', () => {
    $('.modal').fadeIn(500)
 })
+
+$('#cancel').on('click', () => {
+   $('.modal').fadeOut(100)
+})

@@ -5,20 +5,13 @@ from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,Comme
 from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import _EnsureCsrfCookie 
 
 # Create your views here.
 @login_required
 def index(request):
    user = request.user
 
-   if request.method == 'POST':
-      new_post_form = ImageForm()
-      if form.is_valid():
-         form.save()
-         messages.success('Comment added successfully!')
-         return redirect('home')
-   else:
-      new_post_form = ImageForm()
 
    if request.method == 'POST':
       form = CommentForm()
@@ -34,11 +27,29 @@ def index(request):
    context = {
       'images': images,
       'form': form,
-      'user': user,
-      'new_post': new_post_form
+      'user': user
    }
    return render(request, 'timeline/timeline.html', context)
 
+def new_post(request):
+   user = request.user
+
+   if request.method == 'POST':
+      new_post_form = ImageForm()
+      if new_post_form.is_valid():
+         image = new_post_form.save(commit=False)
+         image.author = user
+         image.save()
+         return redirect('home')
+   else:
+      new_post_form = ImageForm()
+
+
+   context = {
+      'new_post': new_post_form
+   }
+
+   return render(request, 'timeline/new-post.html', context)
 
 def register(request):
 
@@ -65,7 +76,7 @@ def register(request):
 @login_required
 def profile(request):
 
-   user = User.objects.filter(username = 'mikechumba').first()
+   user = request.user
 
    context = {
       'user': user

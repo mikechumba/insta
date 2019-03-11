@@ -1,0 +1,24 @@
+{% extends "timeline/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+   {% include "timeline/nav.html" %}
+
+   <div class="page">
+      
+      <div class="update-form">
+
+         <form action="" method="post" enctype="multipart/form-data">
+            <div class="legend">
+               <h5>New Post</h5>
+            </div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Create Post</button>
+         </form>
+      </div>
+      
+   </div>
+
+{% endblock content %}
