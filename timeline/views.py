@@ -160,9 +160,24 @@ def logout_view(request):
 def image_view(request,image_id):
 
    image = Image.objects.filter(pk=image_id).first()
+   comments = Comments.objects.filter(commented_on=image)
+
+   if request.method == 'POST':
+      form = CommentForm(request.POST)
+      if form.is_valid():
+         image_id = request.POST["image_id"]
+         comment = form.save(commit=False)
+         comment.comment_author = user.profile
+         comment.commented_on_id = int(image_id)
+         comment.save()
+         return redirect('home')
+   else:
+      form = CommentForm()
 
    context = {
-      'image': image
+      'image': image,
+      'comments': comments,
+      'form': form
    }
 
    return render(request,'timeline/image_view.html',context)

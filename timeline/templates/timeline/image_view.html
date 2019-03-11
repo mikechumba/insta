@@ -7,7 +7,42 @@
    {% include "timeline/nav.html" %}
 
    <div class="page"></div>
-   div
+   
+   <div class="image-view">
+      <div class="post-image">
+         <img src="{{ image.img.url }}" alt="">
+      </div>
+      <div class="image-details">
+         <div class="image-author">
+            <div class="avatar-sm">
+               <img src="{{ image.author.avatar.url }}" alt="">
+            </div>
+            <p>{{ image.author.user.username }}</p>
+            
+         </div>
+         <div class="image-content">
+            <p><span>{{ image.author.user.username }}</span>{{ image.caption }}</p>
+            <div class="post-comments">
+                  
+               {% for comment in comments  %}
+                  <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
+               {% endfor %}                    
+               
+            </div>
+         </div>
+         <div class="post-icons">
+            <img src="{% static 'images/like.svg' %}" alt="">
+         </div>
+         <div class="post-comment-field">
+            <form action="" method="POST">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <input type="text" name="image_id" id="image_id" value="{{ post.id }}" hidden>
+               <button type="submit" hidden></button>
+            </form>
+         </div>
+      </div>
+   </div>
 
 
 {% endblock content %}
