@@ -6,6 +6,8 @@
    {% include "timeline/nav.html" %}
 
    <div class="page"></div>
+
+   <div class="tl-container">
       <div class="posts-container">
 
          {% for post in images %}
@@ -29,9 +31,12 @@
                   <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>
                </div>
                <div class="post-comments">
-                  {% for comment in post.comments_set  %}
-                    <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
-                  {% endfor %}
+                  {% if post.comment_set %}
+                     {% for comment in post.comments_set  %}
+                        <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
+                     {% endfor %}                    
+                  {% endif %}
+
                </div>
                <div class="post-comment-field">
                   <form action="" method="POST">
@@ -44,5 +49,32 @@
          {% endfor %}
 
       </div>
-  
+      <div class="sidebar">
+         <div class="current-user">
+               <div class="avatar-md">
+                  <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
+               </div>
+               <div class='name'>
+                  <h4>{{ user.username }}</h4>
+                  <p>{{ user.first_name }} {{ user.last_name }}</p>
+               </div>
+         </div>
+         <div class="post-btn">
+            <button id="newpost"> + Add Post</button>
+         </div>
+      </div>
+
+   </div>
+
+   <div class="modal">
+      <div class="new-post">
+         <div class="form-container">
+            <form action="" method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+               {{ new_post.as_p }}
+            </form>
+            <button>Post</button>
+         </div>
+      </div>
+   </div>
 {% endblock content %}

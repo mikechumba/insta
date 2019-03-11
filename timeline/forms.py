@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from .models import Profile,Comments
+from .models import Profile,Comments,Image
 
 class Registration(UserCreationForm):
    '''
@@ -68,4 +68,15 @@ class CommentForm(forms.ModelForm):
       fields = ['comment']
       widgets = {
          'comment': forms.TextInput(attrs={'placeholder': 'Add a Comment'})        
+      }
+
+class ImageForm(forms.ModelForm):
+   '''
+   Image form
+   '''
+   class Meta:
+      model = Image
+      fields = ['img','caption']
+      widgets = {
+         'caption': forms.Textarea(attrs={'placeholder': 'Enter Your Caption'})         
       }

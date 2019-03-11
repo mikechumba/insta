@@ -12,5 +12,5 @@ urlpatterns = [
    path('profile', views.profile, name='profile'),
    path('profile/edit', views.edit_profile, name='edit_profile'),
    path('login/', auth_views.LoginView.as_view(authentication_form=LoginForm), name='login'),
-   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+   path('logout/', views.logout_view, name='logout'),
 ]

@@ -1,14 +1,25 @@
 from django.shortcuts import render,redirect
 from .models import Profile,Image
 from django.contrib.auth.models import User
-from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm
-from django.contrib.auth import login,authenticate
+from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm,ImageForm
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
 def index(request):
+   user = request.user
+
+   if request.method == 'POST':
+      new_post_form = ImageForm()
+      if form.is_valid():
+         form.save()
+         messages.success('Comment added successfully!')
+         return redirect('home')
+   else:
+      new_post_form = ImageForm()
+
    if request.method == 'POST':
       form = CommentForm()
       if form.is_valid():
@@ -22,7 +33,9 @@ def index(request):
 
    context = {
       'images': images,
-      'form': form
+      'form': form,
+      'user': user,
+      'new_post': new_post_form
    }
    return render(request, 'timeline/timeline.html', context)
 
@@ -69,8 +82,11 @@ def edit_profile(request):
       form = ProfileUpdateForm(request.POST, instance=request.user)
       user_form = UserUpdateForm(request.POST, request.FILES, instance=request.user.profile)
       if user_form.is_valid() and form.is_valid():
-         user_form.save()
-         form.save()
+         user_instance = user_form.save(commit=False)
+         profile = form.save(commit=False)
+         profile.user = user_instance
+         user_instance.save()
+         profile.save()
          messages.info(request, 'You\'ve successfully updated your account!')
          return redirect('profile')
    else:
@@ -103,3 +119,7 @@ def login_view(request):
    }
 
    return render(request, 'registration/login.html', context)
+
+def logout_view(request):
+   logout(request)
+   return redirect('login')

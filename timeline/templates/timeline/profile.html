@@ -19,7 +19,8 @@
                      <h1>{{ user.username }}</h1>
                   </div>
                   <div class="edit-btn">
-                     <a href="{% url 'edit_profile' %}">Edit Profile</a>   
+                     <a href="{% url 'edit_profile' %}">Edit Profile</a>
+                     <button id="settings"><i class="fas fa-cog"></i></button> 
                   </div>
                   
                </div>
@@ -37,6 +38,21 @@
                {% endif %}
             </div>
             
+         </div>
+
+      </div>
+   </div>
+
+   <div class="modal">
+      <div class="settings-list">
+         <div class="text">
+            <a href="{% url 'edit_profile' %}">
+               <p>Edit Profile</p>
+            </a>
+            <a href="{% url 'logout' %}">
+               <p class="with-border">Log Out</p>
+            </a>
+            <p>Cancel</p>
          </div>
 
       </div>
