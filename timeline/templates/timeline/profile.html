@@ -5,7 +5,7 @@
 
    {% include "timeline/nav.html" %}
 
-   <div class="page">
+   <div class="page"></div>
       <div class="container">
 
          <div class="profile-content">
@@ -41,11 +41,17 @@
          </div>
 
       </div>
-   </div>
 
-   <div class="images">
-      
-   </div>
+
+      <div class="profile-images">
+         {% for image in images %}
+            <div class="image-card">
+               <img src="{{ image.img.url }}" alt="">
+            </div>
+         {% endfor %}
+      </div>
+
+   
 
    <div class="modal">
       <div class="settings-list">

@@ -35,7 +35,7 @@ def index(request):
    }
    return render(request, 'timeline/timeline.html', context)
 
-
+@login_required
 def users(request,user_name):
    user = Profile.objects.filter(username=user_name).first()
    images = Image.objects.filter(author=user)
@@ -47,6 +47,7 @@ def users(request,user_name):
 
    return render(request, 'timeline/user.html', context)
 
+@login_required
 def new_post(request):
    user = request.user
    if request.method == 'POST':
@@ -92,14 +93,16 @@ def register(request):
 def profile(request):
 
    user = request.user
+   images = Image.objects.filter(author=user.profile)
 
    context = {
-      'user': user
+      'user': user,
+      'images': images
    }
 
    return render(request, 'timeline/profile.html', context)
 
-
+@login_required
 def edit_profile(request):
 
    user = request.user

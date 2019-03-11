@@ -531,3 +531,18 @@ nav {
       text-decoration: none;
    }
 }
+
+.profile-images {
+   width: 60%;
+   margin: 2% auto;
+   display: flex;
+   .image-card {
+      width: 250px;
+      height: 250px;
+      margin: 0.8% 0.4%;
+      overflow: hidden;
+      img {
+         height: 100%;
+      }
+   }
+}

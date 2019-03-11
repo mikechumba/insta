@@ -663,4 +663,23 @@ nav {
 .modal a {
   text-decoration: none;
 }
+
+.profile-images {
+  width: 60%;
+  margin: 2% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profile-images .image-card {
+  width: 250px;
+  height: 250px;
+  margin: 0.8% 0.4%;
+  overflow: hidden;
+}
+
+.profile-images .image-card img {
+  height: 100%;
+}
 /*# sourceMappingURL=style.css.map */
