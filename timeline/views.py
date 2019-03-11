@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Image
+from .models import Profile,Image,Comments
 from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm,ImageForm
 from django.contrib.auth import login,authenticate,logout
@@ -11,13 +11,16 @@ from django.views.decorators.csrf import _EnsureCsrfCookie
 @login_required
 def index(request):
    user = request.user
-
+   comments = Comments.objects.all()
 
    if request.method == 'POST':
-      form = CommentForm()
+      form = CommentForm(request.POST)
       if form.is_valid():
-         form.save()
-         messages.success('Comment added successfully!')
+         image_id = request.POST["image_id"]
+         comment = form.save(commit=False)
+         comment.comment_author = user.profile
+         comment.commented_on_id = int(image_id)
+         comment.save()
          return redirect('home')
    else:
       form = CommentForm()
@@ -27,26 +30,38 @@ def index(request):
    context = {
       'images': images,
       'form': form,
-      'user': user
+      'user': user,
+      'comments': comments
    }
    return render(request, 'timeline/timeline.html', context)
 
+
+def users(request,user_name):
+   user = Profile.objects.filter(username=user_name).first()
+   images = Image.objects.filter(author=user)
+
+   context = {
+      'user': user,
+      'images': images
+   }
+
+   return render(request, 'timeline/user.html', context)
+
 def new_post(request):
    user = request.user
-
    if request.method == 'POST':
-      new_post_form = ImageForm()
-      if new_post_form.is_valid():
-         image = new_post_form.save(commit=False)
-         image.author = user
+      form = ImageForm(request.POST,request.FILES)
+      if form.is_valid():
+         image = form.save(commit=False)
+         image.author = user.profile
          image.save()
          return redirect('home')
    else:
-      new_post_form = ImageForm()
+      form = ImageForm()
 
 
    context = {
-      'new_post': new_post_form
+      'form': form
    }
 
    return render(request, 'timeline/new-post.html', context)
@@ -87,15 +102,15 @@ def profile(request):
 
 def edit_profile(request):
 
-   user = User.objects.filter(username = 'mikechumba').first()
+   user = request.user
 
    if request.method == 'POST':
-      form = ProfileUpdateForm(request.POST, instance=request.user)
-      user_form = UserUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+      form = ProfileUpdateForm(request.POST,instance=user)
+      user_form = UserUpdateForm(request.POST,instance=user)
       if user_form.is_valid() and form.is_valid():
-         user_instance = user_form.save(commit=False)
+         user_instance = user_form.save()
          profile = form.save(commit=False)
-         profile.user = user_instance
+         profile.user = user
          user_instance.save()
          profile.save()
          messages.info(request, 'You\'ve successfully updated your account!')

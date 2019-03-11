@@ -27,7 +27,7 @@ body {
 nav {
    display: flex;
    height: 100%;
-   width: 60%;
+   width: 70%;
    box-sizing: border-box;
    overflow: hidden;
    margin: 0 auto;
@@ -45,10 +45,10 @@ nav {
 
 .logo {
    display: flex;
-   height: 30px;
+   height: 25px;
    align-self: center;
    .logo-icon {
-      width: 25px;
+      width: 20px;
       overflow: hidden;
       margin-right: 15px;
       img {
@@ -79,7 +79,7 @@ nav {
          align-self: center;
          float: left;
          height: 100%;
-         border: 0.6px solid #000;
+         border: 0.3px solid #000;
          margin-right: 15px;
       }
    }
@@ -336,13 +336,14 @@ nav {
 
 // Timeline styling
 .posts-container {
-   width: 40%;
-   margin: 2% auto;
+   width: 48%;
+   margin: 2% 0 0 16%;
 }
 
 .post-card {
    background-color: #fff;
-   border: 1px solid rgba(#333,0.2);
+   border: 1px solid rgba(#333,0.1);
+   margin: 2% 0;
 
    .post-top {
       display: flex;
@@ -393,6 +394,17 @@ nav {
          }
       }
    }
+
+   .post-comments {
+      margin: 1% 2%;
+      p {
+         @include fonts(rgba(#333,0.9),13px,400);
+         
+         span {
+            @include fonts(#000,13px,600);   
+         }
+      }
+   }
    
    .post-comment-field {
       margin: 0;
@@ -409,22 +421,24 @@ nav {
          box-sizing: border-box;
          width: 100%;
          margin: 0;
-         padding: 12px 0;
+         padding: 6px 13px;
          background-color: none;
          border: none;
-         border-top: 1px solid rgba(#333,0.2);
+         // border-top: 1px solid rgba(#333,0.2);
          &::placeholder {
             padding: 0 10px;
          }
-         &::focus {
+         &:focus {
             outline: none;
+            border: none;
          }
       }
       &::before {
          content: '';
          display: block;
-         width: 100%;
-         border: 1px solid clr(bg);
+         width: 97%;
+         margin: 0 auto;
+         border: 0.6px solid rgba(#333,0.1);
       }
    }
 }
@@ -439,9 +453,11 @@ nav {
 }
 
 .sidebar {
+   width: 30%;
+   margin: 3% 2%;
    .avatar-md {
-      width: 48px;
-      height: 48px;
+      width: 45px;
+      height: 45px;
       overflow: hidden;
       border-radius: 50%;
       img {
@@ -449,22 +465,23 @@ nav {
       }
    }
    .name {
-      margin-left: 1%;
+      margin-left: 2%;
       align-self: center;
       h4 {
          margin: 0;
-         @include fonts(#333,13px,500);
+         @include fonts(#333,13px,600);
       }
       p {
          margin: 0;
-         @include fonts(rgba(#333,0.8),12px,400)
+         @include fonts(rgba(#333,0.6),11px,400)
       }
    }
    .post-btn {
+      margin: 3% 0;
       button {
          cursor: pointer;
          border: none;
-         padding: 8px 12px;
+         padding: 8px 16px;
          background-color: clr(buttons);
          @include fonts(#fff,12px,400)
       }
