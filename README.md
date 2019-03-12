@@ -4,7 +4,7 @@
 
 A web app that tries to emulate instagram's features.
 
-[Live Site](https://shashin.herokuapp.com/login/)
+[Live Site](https://shashin-o-mimasu.herokuapp.com/login/)
 
 ### Project Approach
    
