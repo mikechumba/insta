@@ -27,11 +27,9 @@ class Image(models.Model):
    def delete_image(self):
       self.delete()
 
-   @classmethod
-   def update_caption(cls,image_id,cpt):
-      image = cls.objects.get(pk=image_id)
-      image.caption = cpt
-      return image.save()
+   def update_caption(self,cpt):
+      self.caption = cpt
+      self.save()
 
 class Like(models.Model):
 
@@ -44,8 +42,7 @@ class Like(models.Model):
       return like.save()
 
    def delete_like(self):
-      like = Like.objects.all(self)
-      return like.delete()
+      self.delete()
 
 class Comments(models.Model):
    
