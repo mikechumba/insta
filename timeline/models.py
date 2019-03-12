@@ -21,6 +21,18 @@ class Image(models.Model):
    def __str__(self):
       return self.caption
 
+   def save_image(self):
+      self.save()
+
+   def delete_image(self):
+      self.delete()
+
+   @classmethod
+   def update_caption(cls,image_id,cpt):
+      image = cls.objects.get(pk=image_id)
+      image.caption = cpt
+      return image.save()
+
 class Like(models.Model):
 
    liked = models.ForeignKey(Image, on_delete=models.CASCADE)
@@ -50,7 +62,7 @@ class Followed(models.Model):
 
    def __str__(self):
       return self.followers
-
+ 
    @classmethod
    def follow(cls,prfl):
       follow = cls(followers=prfl)
