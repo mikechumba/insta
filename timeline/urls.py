@@ -18,6 +18,6 @@ urlpatterns = [
    path('logout/', views.logout_view, name='logout'),
    path('search/', views.search,name='search'),
    # method views
-   path('follow/', views.follow, name='follow'),
+   path('follow/<user_name>', views.follow, name='follow'),
    path('like/<int:image_id>',views.like,name='like')
 ]

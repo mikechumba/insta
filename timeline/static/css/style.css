@@ -258,6 +258,7 @@ nav {
   border-radius: 50%;
   overflow: hidden;
   margin-right: 3%;
+  border: 1px solid rgba(51, 51, 51, 0.1);
 }
 
 .profile-content .main-avatar img {
@@ -343,7 +344,16 @@ nav {
   color: #fff;
 }
 
+.profile-content .bio h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin: 1% 0;
+}
+
 .profile-content .bio p {
+  margin: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -840,6 +850,13 @@ nav {
   border: 0.6px solid rgba(51, 51, 51, 0.1);
 }
 
+.image-view .post-likes {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
 .user-card {
   width: 20%;
   height: 30vh;
@@ -856,7 +873,7 @@ nav {
 }
 
 .user-card .avatar-md img {
-  width: 100%;
+  height: 100%;
 }
 
 .user-card .user-details {
@@ -868,6 +885,37 @@ nav {
 .user-card .user-details p {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.search-result {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+}
+
+.search-result span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.not-found {
+  width: 80%;
+  text-align: center;
+  margin: 10% auto;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #333;
+}
+
+.not-found span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
   font-weight: 500;
   color: #333;
 }

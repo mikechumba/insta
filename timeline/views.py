@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Image,Comments,Follow,Like
+from .models import Profile,Image,Comments,Followed,Follows,Like
 from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm,ImageForm
 from django.contrib.auth import login,authenticate,logout
@@ -25,7 +25,7 @@ def index(request):
    else:
       form = CommentForm()
 
-   images = Image.objects.all()
+   images = Image.objects.order_by('-time_posted')
 
    context = {
       'images': images,
@@ -214,15 +214,15 @@ def like(request,image_id):
 
    return redirect('home')
 
-def follow(request):
+def follow(request,user_name):
 
    user = request.user
-   follows = Follow.objects.all()
-
+   follows = Follows.objects.filter(profile=user.profile)
+   followed_user = User.objects.filter(username=user_name).first()
    if user.profile not in follows:
-      Follow.follow(user.profile)
+      Follows.follow(user.profile)
+      Followed.follow()
       return redirect('profile')
-
    else:
-      Follow.objects.get(following=user.profile).delete()
+      Follows.objects.get(following=user.profile).delete()
       return redirect('profile')

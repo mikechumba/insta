@@ -21,7 +21,7 @@
                      <h1>{{ user.username }}</h1>
                   </div>
                   <div class="edit-btn">
-                     <a href="{% url 'follow' %}">Follow</a>
+                     <a href="{% url 'follow' user.username %}">Follow</a>
                   </div>
                </div>
 

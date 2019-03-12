@@ -8,7 +8,7 @@
    <div class="page"></div>
    <div class="container">
       {% if user %}
-        <h5>Your search for <span>{{ searched }} returned:</span></h5>
+        <h5 class="search-result">Your search for <span>{{ searched }}</span> returned:</h5>
          <a href="{% url 'user_profile' user.username %}">
             <div class='user-card'>
                <div class="avatar-md">
@@ -20,7 +20,7 @@
             </div>
          </a>
       {% else %}
-        <h5>There's no user going by that username</h5>
+        <h5 class='not-found'>There's no user going by that username</h5>
       {% endif %}
       
    </div>

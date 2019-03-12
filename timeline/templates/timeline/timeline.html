@@ -57,15 +57,17 @@
 
       </div>
       <div class="sidebar">
-         <div class="current-user">
-               <div class="avatar-md">
-                  <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
-               </div>
-               <div class='name'>
-                  <h4>{{ user.username }}</h4>
-                  <p>{{ user.first_name }} {{ user.last_name }}</p>
-               </div>
-         </div>
+         <a href="{% url 'profile' %}">
+            <div class="current-user">
+                  <div class="avatar-md">
+                     <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
+                  </div>
+                  <div class='name'>
+                     <h4>{{ user.username }}</h4>
+                     <p>{{ user.first_name }} {{ user.last_name }}</p>
+                  </div>
+            </div>
+         </a>
          <div class="post-btn">
             <a href="{% url 'new_post' %}">
                <button id="newpost"> + Add Post</button>

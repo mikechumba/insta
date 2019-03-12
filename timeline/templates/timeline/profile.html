@@ -33,6 +33,7 @@
                </div>
                {% if user.profile.bio %}
                   <div class="bio">
+                     <h4>{{ user.first_name }} {{ user.last_name }}</h4>
                      <p>{{ user.profile.bio }}</p>
                   </div>
                {% endif %}
