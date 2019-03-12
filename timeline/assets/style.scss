@@ -259,6 +259,13 @@ nav {
             @include fonts(#333,14px,600);
             border-radius: 4px;
          }
+         button{
+            border: none;
+            background-color: transparent;
+            i {
+               font-size: 20px;
+            }
+         }
          
       }
    }

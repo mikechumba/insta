@@ -20,6 +20,10 @@
                   <div class="profile-user">
                      <h1>{{ user.username }}</h1>
                   </div>
+                  <div class="edit-btn">
+                     <a href="{% url 'follow' %}">Follow</a>
+                     <button id="settings"><i class="fas fa-cog"></i></button> 
+                  </div>
                </div>
 
 
@@ -27,11 +31,6 @@
                   <p><span>{{ user.profile.image_set.count }}</span> posts </p>
                   <p><span>{{ user.profile.followed_by.count }}</span> followers </p>
                   <p><span>{{ user.profile.following.count }}</span> following </p>
-               </div>
-               <div class="follow-btn">
-                  <a href="{% url 'follow' %}">
-                     <button>Follow</button>
-                  </a>
                </div>
                {% if user.profile.bio %}
                   <div class="bio">
