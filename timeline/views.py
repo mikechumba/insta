@@ -108,13 +108,12 @@ def edit_profile(request):
    user = request.user
 
    if request.method == 'POST':
-      form = ProfileUpdateForm(request.POST,instance=user)
+      form = ProfileUpdateForm(request.POST,request.FILES,instance=user.profile)
       user_form = UserUpdateForm(request.POST,instance=user)
       if user_form.is_valid() and form.is_valid():
-         user_instance = user_form.save()
+         user_form.save()
          profile = form.save(commit=False)
          profile.user = user
-         user_instance.save()
          profile.save()
          messages.info(request, 'You\'ve successfully updated your account!')
          return redirect('profile')

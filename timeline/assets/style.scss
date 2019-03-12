@@ -298,6 +298,12 @@ nav {
       }
 
    }
+
+   .bio {
+      p {
+         @include fonts(#333,13px,400);
+      }
+   }
 }
 
 .update-form {
