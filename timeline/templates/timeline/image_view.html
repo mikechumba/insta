@@ -30,8 +30,13 @@
                
             </div>
          </div>
-         <div class="post-icons">
-            <img src="{% static 'images/like.svg' %}" alt="">
+         <div class="post-icons">   
+            <a href="{% url 'like' image.id %}">
+               <img src="{% static 'images/like.svg' %}" alt="">
+            </a>
+         </div>
+         <div class="post-likes">
+            <p>{{ image.like_set.count }} Likes</p>
          </div>
          <div class="post-comment-field">
             <form action="" method="POST">

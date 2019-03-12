@@ -16,10 +16,13 @@
                   <div class="avatar-sm">
                      <img src="{{ post.author.avatar.url }}" alt="">
                   </div>
-                  <p>{{ post.author.user.username }}</p>
+                  <a href="{% url 'user_profile' post.author.user.username %}"><p>{{ post.author.user.username }}</p></a>
                </div>
                <div class="post-image">
-                  <img src="{{ post.img.url }}" alt="">
+                  <a href="{% url 'image_view' post.id %}">
+                     <img src="{{ post.img.url }}" alt="">
+                  </a>
+                  
                </div>
                <div class="post-icons">   
                   <a href="{% url 'like' post.id %}">
