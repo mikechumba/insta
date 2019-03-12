@@ -47,9 +47,13 @@
 
       <div class="profile-images">
          {% for image in images %}
-            <div class="image-card">
+         
+         <div class="image-card">
+            <a href="{% url 'image_view' image.id %}">
                <img src="{{ image.img.url }}" alt="">
-            </div>
+            </a>
+         </div>
+         
          {% endfor %}
       </div>
 

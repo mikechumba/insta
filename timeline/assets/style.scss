@@ -24,6 +24,10 @@ body {
    font-family: $font;
 }
 
+a {
+   text-decoration: none;
+}
+
 nav {
    display: flex;
    height: 100%;
@@ -551,6 +555,7 @@ nav {
    margin: 2% auto;
    display: flex;
    .image-card {
+      cursor: pointer;
       width: 250px;
       height: 250px;
       margin: 0.8% 0.4%;
@@ -636,8 +641,6 @@ nav {
          background-color: transparent;
          border: none;
          // border-top: 1px solid rgba(#333,0.2);
-         &::placeholder {
-         }
          &:focus {
             outline: none;
             border: none;
@@ -651,4 +654,37 @@ nav {
          border: 0.6px solid rgba(#333,0.1);
       }
    }
+}
+
+.user-card {
+   width: 20%;
+   height: 30vh;
+   background-color: #fff;
+   border: 1px solid rgba(#333,0.1);
+
+   .avatar-md {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 3% auto;
+      img {
+         width: 100%;
+      }
+   }
+
+   .user-details {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      p {
+         @include fonts(#333,14px,500);
+      }
+   }
+}
+
+
+@media screen and (max-width: 480px) {
+
+
 }
