@@ -21,11 +21,13 @@
                <div class="post-image">
                   <img src="{{ post.img.url }}" alt="">
                </div>
-               <div class="post-icons">
-                  <img src="{% static 'images/like.svg' %}" alt="">
+               <div class="post-icons">   
+                  <a href="{% url 'like' post.id %}">
+                     <img src="{% static 'images/like.svg' %}" alt="">
+                  </a>
                </div>
                <div class="post-likes">
-                  <p>1 Like</p>
+                  <p>{{ post.like_set.count }} Likes</p>
                </div>
                <div class="post-caption">
                   <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>

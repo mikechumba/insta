@@ -26,6 +26,15 @@ class Like(models.Model):
    liked = models.ForeignKey(Image, on_delete=models.CASCADE)
    liked_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
+   @classmethod
+   def likes(cls,img,prfl):
+      like = cls(liked=img,liked_by=prfl)
+      return like.save()
+
+   def delete_like(self):
+      like = Like.objects.all(self)
+      return like.delete()
+
 class Comments(models.Model):
    
    comment = models.CharField(max_length=140)

@@ -19,5 +19,5 @@ urlpatterns = [
    path('search/', views.search,name='search'),
    # method views
    path('follow/', views.follow, name='follow'),
-   path('like/',views.like,name='like')
+   path('like/<int:image_id>',views.like,name='like')
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Image,Comments,Follow
+from .models import Profile,Image,Comments,Follow,Like
 from django.contrib.auth.models import User
 from .forms import Registration,ProfileUpdateForm,UserUpdateForm,LoginForm,CommentForm,ImageForm
 from django.contrib.auth import login,authenticate,logout
@@ -174,6 +174,8 @@ def logout_view(request):
 @login_required
 def image_view(request,image_id):
 
+   user = request.user
+
    image = Image.objects.filter(pk=image_id).first()
    comments = Comments.objects.filter(commented_on=image)
 
@@ -198,7 +200,18 @@ def image_view(request,image_id):
    return render(request,'timeline/image_view.html',context)
 
 
-def like(request):
+def like(request,image_id):
+
+   user = request.user
+
+   image = Image.objects.filter(pk=image_id).first()
+   like = image.like_set.filter(liked_by=user.profile).first()
+   # like = Like.objects.get(liked=image,liked_by=user.profile)
+
+   if like:
+      like.delete()
+   else:
+      Like.likes(image,user.profile)
 
    return redirect('home')
 
