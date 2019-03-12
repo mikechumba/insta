@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import _EnsureCsrfCookie 
 
 # Create your views here.
-@login_required
+@login_required(login_url='register/')
 def index(request):
    user = request.user
    comments = Comments.objects.all()
